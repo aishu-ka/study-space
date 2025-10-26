@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+:root {
+  /* CSS variables will be set dynamically by JavaScript */
+  /* Default light theme values */
+  --color-background: #f3f4f6;
+  --color-surface: #ffffff;
+  --color-surfaceHover: #f9fafb;
+
+  --color-textPrimary: #1f2937;
+  --color-textSecondary: #6b7280;
+  --color-textTertiary: #9ca3af;
+
+  --color-primary: #ef4444;
+  --color-primaryHover: #dc2626;
+  --color-secondary: #ec4899;
+
+  --color-border: #e5e7eb;
+  --color-borderHover: #d1d5db;
+
+  --color-cardBg: rgba(255, 255, 255, 0.6);
+  --color-modalBg: #ffffff;
+  --color-inputBg: #f9fafb;
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+}
+
+@layer base {
+  body {
+    background: var(--color-background);
+    color: var(--color-textPrimary);
+    min-height: 100vh;
+    transition: background 300ms ease-in-out, color 300ms ease-in-out;
+  }
+
+  * {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: ease-in-out;
+    transition-duration: 300ms;
+  }
+
+  /* Todo List Animations */
+  @keyframes checkmark {
+    0% {
+      stroke-dasharray: 0, 100;
+      stroke-dashoffset: 0;
+      opacity: 0;
+      transform: scale(0);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    100% {
+      stroke-dasharray: 100, 100;
+      stroke-dashoffset: 0;
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes badgePop {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.3);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Background Animations */
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -30px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+  }
+
+  @keyframes floatDelay {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(-40px, 30px) scale(0.9);
+    }
+    66% {
+      transform: translate(25px, -25px) scale(1.1);
+    }
+  }
+
+  @keyframes floatSlow {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(20px, -40px) scale(1.05);
+    }
+  }
+}
