@@ -1,9 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CalendarView from './CalendarView';
 import SpreadsheetView from './SpreadsheetView';
 
 const CalendarModal = ({ isOpen, onClose, tasks, setTasks }) => {
   const [activeTab, setActiveTab] = useState('calendar'); // 'calendar' or 'spreadsheet'
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    const savedName = localStorage.getItem('userName') || 'Your';
+    setUserName(savedName);
+  }, []);
 
   if (!isOpen) return null;
 
@@ -16,7 +22,7 @@ const CalendarModal = ({ isOpen, onClose, tasks, setTasks }) => {
         {/* Header */}
         <div className="flex items-center justify-between p-6 pb-4 border-b" style={{ borderColor: 'var(--color-border)' }}>
           <h2 className="text-2xl font-bold" style={{ color: 'var(--color-textPrimary)' }}>
-            Aishu's Study Space - Calendar
+            {userName}'s Study Space - Calendar
           </h2>
           <button
             onClick={onClose}

@@ -1,4 +1,13 @@
+import { useState, useEffect } from 'react';
+
 const Instructions = ({ isOpen, onClose }) => {
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    const savedName = localStorage.getItem('userName') || 'Your';
+    setUserName(savedName);
+  }, []);
+
   if (!isOpen) return null;
 
   return (
@@ -7,7 +16,7 @@ const Instructions = ({ isOpen, onClose }) => {
         {/* Header */}
         <div className="flex items-center justify-between p-8 pb-4">
           <h2 className="text-2xl font-bold" style={{ color: 'var(--color-textPrimary)' }}>
-            How to Use Aishu's Study Space
+            How to Use {userName}'s Study Space
           </h2>
           <button
             onClick={onClose}
