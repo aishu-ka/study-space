@@ -4,7 +4,7 @@ const Instructions = ({ isOpen, onClose }) => {
   const [userName, setUserName] = useState('');
 
   useEffect(() => {
-    const savedName = localStorage.getItem('userName') || 'Your';
+    const savedName = localStorage.getItem('pomodoroUserName') || 'Your';
     setUserName(savedName);
   }, []);
 
